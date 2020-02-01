@@ -1,2 +1,2 @@
-# Kwas
+# Kwass
 an interpreted language
