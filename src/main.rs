@@ -21,8 +21,10 @@ fn main() -> Result<()>{
 		.map(String::from)
 		.collect();
 
-	for i in input {
-		if let Some(s) = Interpreter::interpret(i) {
+	let i:Interpreter = Interpreter::new();
+
+	for x in input {
+		if let Some(s) = i.intepret(x) {
 			print!("{}", s);
 		}
 	}
