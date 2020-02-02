@@ -8,6 +8,21 @@ pub enum Token {
     #[error]
     Error,
 
+	#[token = "#"]
+	Comment,
+
+	#[token = "="]
+	Assigment,
+
+    #[regex = "\".*\""]
+    Str,
+
+    #[regex = r"[a-zA-z_]+"]
+    Text,
+
+    #[token = ";"]
+    Semicolon,
+
     #[token = "+"]
     Plus,
 
@@ -22,4 +37,10 @@ pub enum Token {
 
     #[token = "**"]
     Exponentiate,
+
+    #[regex = r"\d\d*\.\d*"]
+    Float,
+
+    #[regex = r"\d+"]
+    Integer,
 }
