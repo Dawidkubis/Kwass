@@ -1,33 +1,35 @@
-mod tokens;
+mod logos;
 
-use tokens::Interpreter;
-
-use structopt::StructOpt;
 use anyhow::Result;
+use structopt::StructOpt;
 
 use std::fs::read_to_string;
+use std::io::{self, Write};
 
 #[derive(Debug, StructOpt)]
 struct Opt {
-	/// file to process
-	file: String,
+    /// file to process
+    file: Option<String>,
 }
 
-fn main() -> Result<()>{
-	let opt = Opt::from_args();
+fn main() -> Result<()> {
+    let opt = Opt::from_args();
 
-	let input: Vec<String> = read_to_string(opt.file)?
-		.lines()
-		.map(String::from)
-		.collect();
+    if let None = opt.file {
+        loop {
+            print!("//> ");
 
-	let i:Interpreter = Interpreter::new();
+            io::stdout().flush().unwrap();
 
-	for x in input {
-		if let Some(s) = i.intepret(x) {
-			print!("{}", s);
-		}
-	}
+            let mut input: String = String::new();
+            io::stdin().read_line(&mut input)?;
+        }
+    }
 
-	Ok(())
+    //let input: Vec<String> = read_to_string(opt.file)?
+    //.lines()
+    //.map(String::from)
+    //.collect();
+
+    Ok(())
 }
