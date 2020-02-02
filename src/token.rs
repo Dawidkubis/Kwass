@@ -22,10 +22,4 @@ pub enum Token {
 
     #[token = "**"]
     Exponentiate,
-
-    #[token = "@"]
-    Lol,
-
-    #[regex = "[a-zA-Z]+"]
-    Number,
 }

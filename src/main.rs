@@ -1,4 +1,7 @@
-mod logos;
+mod token;
+mod interpreter;
+
+use interpreter::Interpreter;
 
 use anyhow::Result;
 use structopt::StructOpt;
@@ -23,6 +26,8 @@ fn main() -> Result<()> {
 
             let mut input: String = String::new();
             io::stdin().read_line(&mut input)?;
+
+			Interpreter::interpret(&input);
         }
     }
 
