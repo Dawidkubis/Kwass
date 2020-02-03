@@ -38,7 +38,7 @@ pub enum Token {
     #[token = "**"]
     Exponentiate,
 
-    #[regex = r"\d\d*\.\d*"]
+    #[regex = r"\d+\.\d*"]
     Float,
 
     #[regex = r"\d+"]
